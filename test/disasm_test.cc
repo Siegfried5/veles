@@ -43,6 +43,9 @@ std::ostream& operator<<(std::ostream& os, Entry* entry) {
       hex_print(os, ent->chunk->addr_begin);
       os << " ChunkBegin(id: " << ent->chunk->id.toStdString()
          << ", type: " << ent->chunk->type.toStdString() << ")";
+      if (ent->chunk->type == "INSTRUCTION") {
+        os << " {" << ent->chunk->text_repr.toStdString() << "}";
+      }
       break;
     }
     case EntryType::CHUNK_END: {
